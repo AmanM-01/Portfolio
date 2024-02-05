@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contect Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            background-color: rgb(25, 0, 46);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60%;
+        }
+
+        p {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        form input,
+        form textarea {
+            width: 30%;
+            margin: 10px 0px;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            width: 10%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: blueviolet;
+            font-size: larger;
+            border: none;
+            color: aliceblue;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false">
+            <p> Contect Us </p>
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="Email" id="email" placeholder="Email Address">
+            <input type="text" id="phone" placeholder="Phone No">
+            <textarea name="" id="message" rows="3" placeholder="How can we help you ?"></textarea>
+            <button class="submit">Send</button>
+
+            <script src="https://smtpjs.com/v3/smtp.js">
+            </script>
+            <script>
+                function sendEmail() {
+                    Email.send({
+                        Host: "smtp.elasticemail.com",
+                        Username: "amanmemon0024@gmail.com",
+                        Password: "Mustang06",
+                        To: 'amanmemon046@gmail.com',
+                        From: document.getElementById("email").value,
+                        Subject: "New Contect Form Enquiry",
+                        Body: "Name:" + document.getElementById ('name').value + 
+                            "<br> Email" + document.getElementById('email').value +
+                         "<br> Phone no" + document.getElementById('Phone').value +
+                        "<br> Message" + document.getElementById('Message').value
+                    }).then(
+                        message => alert("Message Send Succesfully")
+                    );
+                }
+            </script>
+        </form>
+    </div>
+</body>
+
+</html>
